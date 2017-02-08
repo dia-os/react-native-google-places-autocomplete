@@ -621,12 +621,14 @@ const GooglePlacesAutocomplete = React.createClass({
     this.setState({
       listViewDisplayed: false
     });
+    this.props.listViewDisplayedChanged(false)
   },
 
   _onFocus() {
     this.setState({
       listViewDisplayed: true
     });
+    this.props.listViewDisplayedChanged(true)
   },
 
   _shouldShowPoweredLogo() {
