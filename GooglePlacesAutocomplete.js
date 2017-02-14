@@ -532,9 +532,16 @@ const GooglePlacesAutocomplete = React.createClass({
   },
   _onChangeText(text) {
     this._request(text);
+    var islistViewDisplayed=false
+    if(text.length>this.props.minLength)
+     {
+       islistViewDisplayed=true
+     }
+
+    this.props.listViewDisplayedChanged(islistViewDisplayed)
     this.setState({
       text: text,
-      listViewDisplayed: true,
+      listViewDisplayed: islistViewDisplayed,
     });
   },
 
@@ -625,10 +632,10 @@ const GooglePlacesAutocomplete = React.createClass({
   },
 
   _onFocus() {
-    this.setState({
+  /*  this.setState({
       listViewDisplayed: true
-    });
-    this.props.listViewDisplayedChanged(true)
+    });*/
+
   },
 
   _shouldShowPoweredLogo() {
